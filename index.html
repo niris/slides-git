@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+    .bg.remark-slide-content {
+       background-position: top;
+       background-size: contain;
+       background-color: #022150;
+       padding: 20em 0em 0em 1em;
+       color:white;
+     }
+    .bg.remark-slide-content h1, .bg.remark-slide-content h2{
+      text-shadow: 0.05em 0.05em 0.15em black;
+    }
+    code{
+      color:white;
+      background: rgba(0,0,0,0.8);
+      border-radius: .2em;
+      padding: .05em .3em .05em .3em;
+      box-shadow: 0.1em 0.1em 1em black inset;
+    }
+    .half img{
+      max-width: 25%;
+      max-height: 25%;
+      vertical-align: middle;
+    }
+    </style>
+  </head>
+  <body><textarea id="source">
+# .center[Git for beginner]
+# .center[-]
+### .center[Rémy F]
+# .center[-]
+### .center[RERU 2018]
+
+---
+
+# Versioning (like a designer)
+![](designer_versionning.png)
+- confusing naming (wich is the last ?)
+- no remote backup
+
+---
+
+# Versioning (like a pro)
+
+As developper we need versioning because:
+
+- It keep a trace of every file changes, so you can
+  - See what/who changed what line and why
+  - Undo the changes
+  - Reorder the changes
+  - Clean your code !
+- Work offline
+- Allow multiple user to collaborate
+- You want to backup on a remote server
+
+---
+
+# Major Version Control Systems
+
+## Mid tier:
+- CVS : created in the 80's
+- SVN : try to fix CVS
+## Good tier:
+- Mercurial : very similar to git
+- Git : Powerfull versioning tool, but hard to learn.
+
+I'll make it visual (thank to my painting skills) so it's easy to remeber
+
+---
+
+# History of git
+
+Created by .half[![](torvalds.jpg)] for his small project .half[![](linux.png)] because other Versioning Tools (CVS, SVN) wasn't good enough for him.
+
+### Trivia:
+
+Linux was using **BitKeeper**, a proprietary solution wths a free licence to linux if they do not try to re-code it (wich appened). So the license was revoked and linus had no choice but to stop linux and make a new software quickly.
+
+---
+
+class: center
+# Now let's start
+![](use.git.jpg)
+
+---
+
+class:bg
+background-image: url(1.png)
+## `mkdir myproject && cd myproject`
+Yes, this is an island in the sea, trust me
+
+---
+class:bg
+background-image: url(2.png)
+## `git init`
+
+There is a new directory `.git` = the guy watching your island
+
+---
+class:bg
+background-image: url(2.png)
+## `git status`
+Use this command to know the status of your git, very usefull.
+
+`On branch master` : this is the **default** name of your deck, we'll need it later
+
+---
+class:bg
+background-image: url(3.png)
+## `touch tree`
+We will create a file named `tree`
+
+---
+class:bg
+background-image: url(4.png)
+## `git stage tree`  or `git add tree`
+This will copy the file `tree` in the staging area
+
+---
+class:bg
+background-image: url(5.png)
+## `git commit -m 'Tree Added' `
+This close the box with a message on it (more detail later)
+---
+class:bg
+background-image: url(6.png)
+## The stage is now free again
+
+---
+class:bg
+background-image: url(7.png)
+## `touch wall`
+
+---
+class:bg
+background-image: url(8.png)
+## `git add wall`
+
+---
+class:bg
+background-image: url(8-2.png)
+## `git commit -m 'to finish' `
+
+---
+class:bg
+background-image: url(9.png)
+## The stage is now free again
+
+---
+class:bg
+background-image: url(10.png)
+## Find a free Git Hosting
+- Github by Microsoft
+- Gitlab by GitLab Inc.
+- BitBucket by Atlassian
+- Your Home/University/Entreprise git server
+
+---
+class:bg
+background-image: url(11.png)
+### `git remote add github github.com/me/house`
+This will explain to git where to push the code.
+
+---
+class:bg
+background-image: url(12.png)
+### we can now send the code on the cloud
+
+---
+class:bg
+background-image: url(13.png)
+## `git push github master`
+Upload to the server named "github", the content of our deck (did you remember the name ?)
+
+---
+class:bg
+background-image: url(14.png)
+## Let's say something `rm *` your project
+Your `.git` filder is still here (`*` does not delete hidden files)
+---
+class:bg
+background-image: url(13.png)
+## We can rebuild using our boxes !
+## `git reset --hard`
+The `--hard` part is to confirm that you are ready to lose what's on your island (nothing)
+---
+class:bg
+background-image: url(15.png)
+Now let say that everything has been deleted (including the `.git`)
+## `rm * && rm .git`
+
+---
+class:bg
+background-image: url(16.png)
+## We can still fetch from the cloud !
+## `git clone github.com/me/house .`
+So remember to push your file everyday, or you will regret it ... trust me
+
+---
+background-image: url(git.commit.png)
+
+---
+# Let's recap
+- `git init` = initialize git on the project
+- `git add/stage` = add a modification to the staging area
+- `git commit` = seal the staging area into a box
+- `git push` = send the boxes to the cloud
+- `git clone` = retreive your project from cloud
+- `git remote` = remote server to upload the code
+- `git reset --hard` = replace your file with the last commit
+- `git status` = tell you what changed, what is wrong...
+
+---
+# Git advanced
+In the following part we will see the most complex part of git
+
+---
+# `git commit`
+- You give a message (`-m`) to explain what's inside
+- Git will add the previous ID
+- the **changes** from the previous commit
+- Git will generate a unique ID based on all the above data
+- if one of the prvious data change, the generated ID will change too !
+
+---
+# `git branch`
+when 2 commit have the same parent = it's a new branch
+Branch naming is important "stable" "unstable" "dev-refactor"
+`git checkout -b unstable`
+
+---
+# `git rebase`
+Let's say you commited a password in a box
+You open back a box, change it, close it, re-stamp it => it ID changed ! (now think about the children)
+- you boxed a sensible information
+- interactiv mode
+- ammend
+- squash
+
+![](rebase.gif)
+
+---
+![](rebase.conflict.jpg)
+---
+![](rebase.conflict2.jpg)
+---
+![](rebase.ok.jpg)
+---
+![](rebase.jpg)
+
+---
+# `git log --graph --oneline --all` or `tig`
+Show you the complete graph of your commits
+
+very usefull when you are lost
+
+---
+# `git blame`
+![](git.blame.jpg)
+
+---
+# `git revert`
+
+---
+# `git merge`
+Someone also work on your project and want to give it changes to you
+![](git.merge.jpg)
+
+---
+# git branch workflow
+![](php-workflow.png)
+
+
+    </textarea>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js">
+    </script>
+    <script>
+       var slideshow = remark.create();
+    </script>
+  </body>
+</html>

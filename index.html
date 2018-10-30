@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css@8.0.0/normalize.css">
     <style type="text/css">
     .bg.remark-slide-content {
        background-position: top;
@@ -57,26 +58,24 @@ As developper we need versioning because:
 
 ---
 
-# Major Version Control Systems
+#### Concurrent Versions System (CVS):
+- Created in 86 released in 1990 (dead since 10 years)
+- Base for all the rests
 
-## Mid tier:
-- CVS : created in the 80's
-- SVN : try to fix CVS
-## Good tier:
-- Mercurial : very similar to git
-- Git : Powerfull versioning tool, but hard to learn.
+#### Subversion (SVN):
+- released in 2000
+- try to be CVS compatible and fix bug and add missing features
+- Not good with file renaming and is centralized
 
-I'll make it visual (thank to my painting skills) so it's easy to remeber
+#### Git:
+- Linux Kernel was versionnized under **BitKeeper**, a paying proprietary solution with a free licence to Linux community,
+as long as they do not try to understand how BitKeeper work ... wich, of course, appened.
+In 2005 the license was revoked and Linus had no choice but to stop working on the Linux kernel and create a new software because he was not happy with CVS & SVN.
+- Decentralised architecture
 
----
-
-# History of git
-
-Created by .half[![](torvalds.jpg)] for his small project .half[![](linux.png)] because other Versioning Tools (CVS, SVN) wasn't good enough for him.
-
-### Trivia:
-
-Linux was using **BitKeeper**, a proprietary solution wths a free licence to linux if they do not try to re-code it (wich appened). So the license was revoked and linus had no choice but to stop linux and make a new software quickly.
+#### Mercurial (Hg):
+- Created around the same time as Git (205), with the same goal (to host the Linux kernel) for the same reason (replace bitkeeper)
+- Slightly easyer to use than git
 
 ---
 
@@ -202,19 +201,38 @@ So remember to push your file everyday, or you will regret it ... trust me
 background-image: url(git.commit.png)
 
 ---
-# Let's recap
+### What we saw
 - `git init` = initialize git on the project
 - `git add/stage` = add a modification to the staging area
 - `git commit` = seal the staging area into a box
+- `git remote` = remote server to upload the code
 - `git push` = send the boxes to the cloud
 - `git clone` = retreive your project from cloud
-- `git remote` = remote server to upload the code
 - `git reset --hard` = replace your file with the last commit
 - `git status` = tell you what changed, what is wrong...
 
 ---
+
 # Git advanced
 In the following part we will see the most complex part of git
+- How commit work
+- What is a branch and why use them
+
+- `git branch` Create a branch
+- `git checkout` move between branches
+- `git tag`
+- `git cherry-pick`
+- `git blame`
+- `git config`
+- `git apply`
+- `git diff`
+- `git fetch`
+- `git merge / request-pull`
+- `git rebase`
+- `git revert`
+- `git stash`
+- `git submodule`
+- `tig` / `git log / shortlog / whatchanged`
 
 ---
 # `git commit`
@@ -228,6 +246,7 @@ In the following part we will see the most complex part of git
 # `git branch`
 when 2 commit have the same parent = it's a new branch
 Branch naming is important "stable" "unstable" "dev-refactor"
+
 `git checkout -b unstable`
 
 ---
@@ -274,10 +293,7 @@ Someone also work on your project and want to give it changes to you
 
 
     </textarea>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js">
-    </script>
-    <script>
-       var slideshow = remark.create();
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>
+    <script>var slideshow = remark.create();</script>
   </body>
 </html>

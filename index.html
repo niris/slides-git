@@ -28,7 +28,8 @@
     </style>
   </head>
   <body><textarea id="source">
-# .center[Git for beginner]
+![](gitlogo.png)
+# .center[Git for beginners]
 # .center[-]
 ### .center[Rémy F]
 # .center[-]
@@ -38,44 +39,49 @@
 
 # Versioning (like a designer)
 ![](designer_versionning.png)
-- confusing naming (wich is the last ?)
-- no remote backup
+- Confusing naming (which is the last ?)
+- No remote backup
 
 ---
 
 # Versioning (like a pro)
 
-As developper we need versioning because:
+As developper we need versioning to:
 
-- It keep a trace of every file changes, so you can
-  - See what/who changed what line and why
-  - Undo the changes
-  - Reorder the changes
-  - Clean your code !
-- Work offline
-- Allow multiple user to collaborate
-- You want to backup on a remote server
+- Track and trace changes in computer files, so you can
+  - See which lines are changed by who and why
+  - Undo changes
+  - Reorder changes
+  - Have a clean code !
+- Allow multiple users to collaborate
+- Backup work on a remote server
 
 ---
+#Version control systems
 
 #### Concurrent Versions System (CVS):
-- Created in 86 released in 1990 (dead since 10 years)
-- Base for all the rests
+- Created in 1986, released in 1990 (dead around 10 years ago)
+- Inspiration for the other versions control system
 
 #### Subversion (SVN):
-- released in 2000
-- try to be CVS compatible and fix bug and add missing features
-- Not good with file renaming and is centralized
+- Released in 2000
+- Try to be CVS compatible by fixing some bugs and add missing features
+- Problems with file renaming
+- Centralized 
+
+---
+#Version control systems
 
 #### Git:
+- Created in 2005 by Linux Torvalds, the creator of Linux Kernel
 - Linux Kernel was versionnized under **BitKeeper**, a paying proprietary solution with a free licence to Linux community,
-as long as they do not try to understand how BitKeeper work ... wich, of course, appened.
-In 2005 the license was revoked and Linus had no choice but to stop working on the Linux kernel and create a new software because he was not happy with CVS & SVN.
+as long as they do not try to understand how BitKeeper work.
+- In 2005 the license was revoked and Linus had no choice but to stop working on the Linux kernel and create a new software because he was not happy with CVS & SVN.
 - Decentralised architecture
 
 #### Mercurial (Hg):
-- Created around the same time as Git (205), with the same goal (to host the Linux kernel) for the same reason (replace bitkeeper)
-- Slightly easyer to use than git
+- Released around the time of creation of Git (2005), with the same goal (to host the Linux kernel), for the same reason (replace bitkeeper)
+- Slightly easier to use than git
 
 ---
 
@@ -95,7 +101,7 @@ class:bg
 background-image: url(2.png)
 ## `git init`
 
-There is a new directory `.git` = the guy watching your island
+There is a new directory `.git` = the guy is watching your island
 
 ---
 class:bg

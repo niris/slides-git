@@ -20,133 +20,187 @@
       padding: .05em .3em .05em .3em;
       box-shadow: 0.1em 0.1em 1em black inset;
     }
-    .half img{
-      max-width: 25%;
-      max-height: 25%;
-      vertical-align: middle;
-    }
+    .w100 img{ width: 100%;}
+    .w75  img{ width: 75%;}
+    .w50  img{ width: 50%;}
+    .w25  img{ width: 25%;}
     </style>
   </head>
   <body><textarea id="source">
-![](gitlogo.png)
 # .center[Git for beginners]
-# .center[-]
+### .center[![](logo.png)]
 ### .center[Rémy F]
-# .center[-]
-### .center[RERU 2018]
+#### .center[Department of Information Technology, RERU]
+#### .center[1 November 2018]
 
 ---
 
 # Versioning (like a designer)
 ![](designer_versionning.png)
-- Confusing naming (which is the last ?)
+- Confusing naming (wich is the last ?)
 - No remote backup
 
 ---
 
-# Versioning (like a pro)
+# Versioning (like a developer)
 
-As developper we need versioning to:
+As developper we need versioning because:
 
-- Track and trace changes in computer files, so you can
-  - See which lines are changed by who and why
-  - Undo changes
-  - Reorder changes
-  - Have a clean code !
-- Allow multiple users to collaborate
-- Backup work on a remote server
+- Versioning allows multiple users to collaborate
+- Versioning allows backuping on a remote server
+- Versioning allows track and trace every changes in computer files :
+  - **who** changed **what** ? **when** and **why** ?
+- Versioning helps you in the your development:
+  - Undo a change (if it was a bug)
+  - Have a clean code (no more comment block)
+
+The Goal of versioning is to free your mind !
 
 ---
-#Version control systems
 
-#### Concurrent Versions System (CVS):
-- Created in 1986, released in 1990 (dead around 10 years ago)
+## Existing Control Version Systems (1/2)
+
+### Concurrent Versions System (CVS):
+- Created in 1986, released in 1990
+- Obsoleted around 10 years ago
 - Inspiration for the other versions control system
 
-#### Subversion (SVN):
+### Subversion (SVN):
 - Released in 2000
-- Try to be CVS compatible by fixing some bugs and add missing features
+- Try to be CVS compatible and fix bug and add missing features
 - Problems with file renaming
-- Centralized 
+- Centralized architecture
 
 ---
-#Version control systems
 
-#### Git:
+## Existing Control Version Systems (2/2)
+
+### Git:
 - Created in 2005 by Linux Torvalds, the creator of Linux Kernel
-- Linux Kernel was versionnized under **BitKeeper**, a paying proprietary solution with a free licence to Linux community,
-as long as they do not try to understand how BitKeeper work.
+- Linux Kernel was versionized under **BitKeeper**, a paying proprietary solution with a free licence to Linux community, as long as they do not try to understand how BitKeeper work.
 - In 2005 the license was revoked and Linus had no choice but to stop working on the Linux kernel and create a new software because he was not happy with CVS & SVN.
-- Decentralised architecture
+- Decentralised architecture (no need of server)
+- Most used [87%](https://insights.stackoverflow.com/survey/2018/#work-version-control)
 
-#### Mercurial (Hg):
-- Released around the time of creation of Git (2005), with the same goal (to host the Linux kernel), for the same reason (replace bitkeeper)
-- Slightly easier to use than git
+### Mercurial (Hg):
+- Released around the time of creation of Git (2005), with the same goal (to host the Linux kernel) and for the same reason (replace bitkeeper)
+- Slightly easier to use than git but less popular (3.6%)
 
 ---
 
 class: center
-# Now let's start
 ![](use.git.jpg)
 
 ---
+# How to use git
 
+### Command-line Interface (CLI)
+The efficent and **Classic** way
+- Windows download at : https://git-scm.com/downloads
+- Linux install : `apt install git`
+
+### Graphical User Interface (GUI)
+Supposed to be **simpler** but hard to know what you are doing (especially when you project is in weird state)
+They use the CLI in background anyway, so they can't do more than CLI.
+
+Existing GUI :
+ - SourceTree
+ - GitHub Desktop
+ - GitKraken
+ - ... see more at https://git-scm.com/download/gui/windows
+
+---
 class:bg
 background-image: url(1.png)
-## `mkdir myproject && cd myproject`
+
+# Now let's start with an example !
+
+Git is hard to remember, so let's use an illustrated example.
+
 Yes, this is an island in the sea, trust me
 
 ---
 class:bg
-background-image: url(2.png)
-## `git init`
-
-There is a new directory `.git` = the guy is watching your island
+background-image: url(1.png)
+## Create your project
+`mkdir myproject`  
+`cd myproject`
 
 ---
 class:bg
 background-image: url(2.png)
-## `git status`
-Use this command to know the status of your git, very usefull.
+## Initialize the local directory as a Git repository
+`git init`
 
-`On branch master` : this is the **default** name of your deck, we'll need it later
+There is a new directory `.git` = the guy watching your island
+
+
+---
+class:bg
+background-image: url(2.png)
+
+## First time ? Tell git who you are
+
+`git config --global user.email "you@example.com"`
+
+`git config --global user.name "Your Name"`
+
+---
+class:bg
+background-image: url(2.png)
+## Check git status
+`git status`  
+`git log --graph --oneline --all`  
+`tig`
+
+
+Ps. `On branch master` is the **default** name of your deck, we'll need it later
 
 ---
 class:bg
 background-image: url(3.png)
-## `touch tree`
-We will create a file named `tree`
+## Create a file named `tree`
+`touch tree`
 
 ---
 class:bg
 background-image: url(4.png)
-## `git stage tree`  or `git add tree`
-This will copy the file `tree` in the staging area
+## Copy the file `tree` in the staging area
+`git add tree` or  
+`git stage tree` 
 
 ---
 class:bg
 background-image: url(5.png)
-## `git commit -m 'Tree Added' `
-This close the box with a message on it (more detail later)
+## Check git status and Commit the file
+`git status`  
+`git commit -m 'My new tree' ` 
+
+
+This close the box with a message on it (more details later)
 ---
 class:bg
 background-image: url(6.png)
+
 ## The stage is now free again
 
 ---
 class:bg
 background-image: url(7.png)
-## `touch wall`
+## Let's make an another file
+`touch wall`
 
 ---
 class:bg
 background-image: url(8.png)
-## `git add wall`
+## Copy the file in the staging area
+`git add wall`
 
 ---
 class:bg
 background-image: url(8-2.png)
-## `git commit -m 'to finish' `
+## Commit the file
+`git commit -m 'Wall added' `
 
 ---
 class:bg
@@ -154,6 +208,12 @@ background-image: url(9.png)
 ## The stage is now free again
 
 ---
+class:bg
+background-image: url(9.png)
+## What's next ?
+
+---
+
 class:bg
 background-image: url(10.png)
 ## Find a free Git Hosting
@@ -163,48 +223,90 @@ background-image: url(10.png)
 - Your Home/University/Entreprise git server
 
 ---
+### Create an account on Github
+.w100[![](signup.png)]
+
+
+
+---
+
+### Create new git "repository" on Github
+![](newRepo.png)
+
+
+---
 class:bg
-background-image: url(11.png)
-### `git remote add github github.com/me/house`
+background-image: url(10.png)
+### Host your code on a server (Github)
+`git remote add github https://github.com/user/repo.git`  
+
 This will explain to git where to push the code.
+
+verify with `git remote -v`
 
 ---
 class:bg
 background-image: url(12.png)
-### we can now send the code on the cloud
+### We can now send the code on the cloud
 
 ---
 class:bg
 background-image: url(13.png)
-## `git push github master`
-Upload to the server named "github", the content of our deck (did you remember the name ?)
+### Upload changes in your code to the server
+`git push github master`
+
+
+Upload code to the server named "github", the content of our deck (did you remember the name ?)
 
 ---
 class:bg
 background-image: url(14.png)
-## Let's say something `rm *` your project
-Your `.git` filder is still here (`*` does not delete hidden files)
+## Let's try something fun 
+`rm *` 
+
+What happened ? :o
 ---
 class:bg
 background-image: url(13.png)
-## We can rebuild using our boxes !
-## `git reset --hard`
-The `--hard` part is to confirm that you are ready to lose what's on your island (nothing)
+## Don't worry, we can rebuild it !
+`git reset --hard`
+
+
+The `--hard` option is to confirm that you are ready to lose what's on your island (nothing)
 ---
 class:bg
 background-image: url(15.png)
-Now let say that everything has been deleted (including the `.git`)
-## `rm * && rm .git`
+###And if we try this command ? 
+`cd .. && rm -rf myproject`
 
+What happened ? :o :o
 ---
 class:bg
 background-image: url(16.png)
-## We can still fetch from the cloud !
-## `git clone github.com/me/house .`
-So remember to push your file everyday, or you will regret it ... trust me
+## Don't worry, we can fetch it !
+`git clone https://github.com/me/house`
+
+
+
+So remember to push your file everyday, or you will regret it ... trust me ;)
 
 ---
-background-image: url(git.commit.png)
+class:bg
+background-image: url(13.png)
+## Everything is back ! Wowwwwww
+
+
+---
+### What we saw
+- `git ----` = initialize git on the project
+- `git ---/-----` = add a modification to the staging area
+- `git ------` = seal the staging area into a box
+- `git ------` = remote server to upload the code
+- `git ----` = send the boxes to the cloud
+- `git -----` = retreive your project from cloud
+- `git ----- --hard` = replace your file with the last commit
+- `git ------` = tell you what changed, what is wrong...
+- `git ------` = Change the configuration of your git (profile, alias ...)
 
 ---
 ### What we saw
@@ -216,86 +318,258 @@ background-image: url(git.commit.png)
 - `git clone` = retreive your project from cloud
 - `git reset --hard` = replace your file with the last commit
 - `git status` = tell you what changed, what is wrong...
+- `git config` = Change the configuration of your git (profile, alias ...)
+
+.w100[![](resume.png)]
 
 ---
 
-# Git advanced
-In the following part we will see the most complex part of git
-- How commit work
-- What is a branch and why use them
+# Git for Collaboration
 
-- `git branch` Create a branch
-- `git checkout` move between branches
+In the following section we will see more details
+- How `git commit` really works
+- What is a `branch`/`tag` and why you need them for your collaborative working
+- How to rebase and merge your branches
+- How to resolve conflicts
+
+After that you will be ready to work in an big project.
+
+---
+# `git commit`
+A commit contains the following information:
+
+```md
+Parent:     8385f398096b332114eadbd960c0af421e2b3561
+Author:     sirin <sirin@example.com>
+AuthorDate: Tue Oct 30 14:24:47 2018 +0700
+Commit:     sirin <sirin@example.com>
+CommitDate: Tue Oct 30 14:24:47 2018 +0700
+
+    This is the title of the commit message
+    
+    This is the body of the commit message
+    - I can explain in detail the reason of the commit
+    - What does it fix and why
+
+ index.html | 64 ++++++++++++++++++++++++++----------------
+
+________________________________________________
+commit: 63bd330cb5cbda923df3fce5c4776355deadc570
+```
+A commit is identified by it SHA-1 (63bd330...) generated from the previous info.
+This id will be used by next commit (see `Parent`)
+
+---
+# What is a branch
+
+Remembering SHA1 is hard, so we use *branch* to remember where we are.
+
+Also branch are usefull because it allows each dev to work on they own "zone".
+
+Luckily us git creates and places us on a "master" branch by default.
+
+```ini
+c21e2b35 2014-12-25 Remy   o   [master] Add Tree
+```
+
+---
+# What is a branch ?
+
+So when you commit, the master will *follow* you because you are working on the master branch.
+
+```ini
+24243242 2014-12-26 Remy   o   [master] Add Wall
+c21e2b35 2014-12-25 Remy   o            Add Tree
+```
+---
+# What is a branch
+But you can create a custom branch ! `git branch wall`
+
+```ini
+24243242 2014-12-26 Remy   o   [master] {wall} Add Wall
+c21e2b35 2014-12-25 Remy   o                   Add Tree
+```
+
+The branch has been create (but we are still in master).
+
+---
+# What is a branch
+So if we commit again, master is still following us, but `wall` stays where it was created.
+```ini
+45674567 2014-12-27 Remy   o   [master]   My commit
+24243242 2014-12-26 Remy   o   {wall}     Add Wall
+c21e2b35 2014-12-25 Remy   o              Add Tree
+```
+---
+# What is a branch
+We need to use `git checkout wall` to change our position
+```ini
+45674567 2014-12-27 Remy   o   {master}   My commit
+24243242 2014-12-26 Remy   o   [wall]     Add Wall
+c21e2b35 2014-12-25 Remy   o              Add Tree
+```
+We are now working on the `wall` branch
+---
+# What is a branch
+If we commit again, the `wall` branch will follow us
+```ini
+55555555 2014-12-28 Remy   o   [wall]     Hello
+45674567 2014-12-27 Remy   │ o {master}   My commit
+24243242 2014-12-26 Remy   o─┘            Add Wall
+c21e2b35 2014-12-25 Remy   o              Add Tree
+```
+We have created a new commit after the "Add wall". And the `wall` is following us.
+
+We now have 2 branches with 2 different content inside.
+
+Let's `git rebase master` our wall branch
+
+---
+# Manage your branches
+Now we have the branch wall based on the branch master:
+
+```ini
+33333333 2014-12-28 Remy     o [wall]     Hello
+45674567 2014-12-27 Remy     o {master}   My commit
+24243242 2014-12-26 Remy   o─┘            Add Wall
+c21e2b35 2014-12-25 Remy   o              Add Tree
+```
+.center.w50[![](rebase.ok.jpg)]
+
+Did you notice that the SHA1 has changed ? Why ?  
+
+
+---
+# Manage your branches
+If the old commit exists on the server it will be replaced when we `git push`  
+Git does not let you lost your work easily, so we need to specify `git push --force`.
+This tell git that we understand that something will be lost forever.
+.center[![](pushforce.jpg)]
+
+---
+# Manage your branches
+Now we have the branch `wall` based on the branch `master`:
+
+```ini
+33333333 2014-12-28 Remy   o   [wall]     Hello
+45674567 2014-12-27 Remy   o   {master}   My commit
+24243242 2014-12-26 Remy   o              Add Wall
+c21e2b35 2014-12-25 Remy   o              Add Tree
+```
+
+---
+# Manage your branches
+If we are curently on wall,  
+we can now **Move** `master` to be on the same commit as `wall`  
+using `git branch -M master wall`
+
+or we can **Delete** master (`git branch -D master`)  
+and re-create it next to `wall` using `git branch master`
+```ini
+33333333 2014-12-28 Remy   o   [wall]{master} Hello
+45674567 2014-12-27 Remy   o                  My commit
+24243242 2014-12-26 Remy   o                  Add Wall
+c21e2b35 2014-12-25 Remy   o                  Add Tree
+```
+
+---
+# Manage your branches
+
+What will happen if we `git checkout master` && `git branch -D wall` ?
+
+---
+# Manage your branches
+
+What will happen if we `git checkout master` && `git branch -D wall` ?
+
+```ini
+33333333 2014-12-28 Remy   o   [master] Hello
+45674567 2014-12-27 Remy   o            My commit
+24243242 2014-12-26 Remy   o            Add Wall
+c21e2b35 2014-12-25 Remy   o            Add Tree
+```
+We will only have the branch `master`, but with the work of the branch `wall`  inside
+---
+# Manage your branches
+But what will happen if `master` AND `wall` has changed the same file at the same line ?
+Git is not so smart, it will pause the rebase, and ask you to resolve the conflict.
+
+.w100[![](rebase.conflict2.jpg)]
+
+Let's see a demo of conflict resolving.
+
+---
+
+# Manage your commit
+Imagine you commited a password  
+We need to go back in time using `git rebase -i HEAD~4` where 4 is the number of commit we will manage.
+
+The interactiv mode `-i` allow you to :
+- mix multiple commit into 1 (squash)
+- change your commit order
+- delete a commit
+- edit the content of a commit (edit).
+- edit the message of a commit (amend).
+
+---
+
+# The new commands we saw :
+
+- `git ------` = Manage your branch (Create/Move/Delete)
+- `git --------` = Move yourself between branches
+- `git ------` = Move a branch on top of another
+- `git ------ -i` = Interactively manage your commits
+
+---
+
+# The new commands we saw :
+
+- `git branch` = Manage your branch (Create/Move/Delete)
+- `git checkout` = Move yourself between branches
+- `git rebase` = Move a branch on top of another
+- `git rebase -i` = Interactively manage your commits
+
+---
+
+# But git is also
 - `git tag`
 - `git cherry-pick`
 - `git blame`
-- `git config`
 - `git apply`
 - `git diff`
 - `git fetch`
 - `git merge / request-pull`
-- `git rebase`
 - `git revert`
-- `git stash`
 - `git submodule`
 - `tig` / `git log / shortlog / whatchanged`
 
----
-# `git commit`
-- You give a message (`-m`) to explain what's inside
-- Git will add the previous ID
-- the **changes** from the previous commit
-- Git will generate a unique ID based on all the above data
-- if one of the prvious data change, the generated ID will change too !
 
 ---
-# `git branch`
-when 2 commit have the same parent = it's a new branch
-Branch naming is important "stable" "unstable" "dev-refactor"
 
-`git checkout -b unstable`
-
----
-# `git rebase`
-Let's say you commited a password in a box
-You open back a box, change it, close it, re-stamp it => it ID changed ! (now think about the children)
-- you boxed a sensible information
-- interactiv mode
-- ammend
-- squash
-
-![](rebase.gif)
+class:bg
+background-image: url(17.1.png)
+## Let's see a last command : `stash`
+### You bought a new door and designed to paint the wall
+`touch door`  
+`echo pink > wall`
 
 ---
-![](rebase.conflict.jpg)
----
-![](rebase.conflict2.jpg)
----
-![](rebase.ok.jpg)
----
-![](rebase.jpg)
+class:bg
+background-image: url(17.2.png)
+## First I `git add` for the commit
+### But I forgot to take a photo before my new design
 
 ---
-# `git log --graph --oneline --all` or `tig`
-Show you the complete graph of your commits
-
-very usefull when you are lost
-
+class:bg
+background-image: url(18.png)
+## So I `git stash`
+### It'll save my 2 changes in a temporary zone
+### Now I can take a photo of my island
 ---
-# `git blame`
-![](git.blame.jpg)
-
----
-# `git revert`
-
----
-# `git merge`
-Someone also work on your project and want to give it changes to you
-![](git.merge.jpg)
-
----
-# git branch workflow
-![](php-workflow.png)
+class:bg
+background-image: url(17.2.png)
+## Now I `git stash pop` to restore
+### The door is back in the island **and** the staging
 
 
     </textarea>

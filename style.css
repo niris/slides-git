@@ -1,0 +1,26 @@
+.bg.remark-slide-content {
+   background-position: top;
+   background-size: contain;
+   background-color: #022150;
+   padding: 20em 0em 0em 1em;
+   color:white;
+ }
+.bg.remark-slide-content h1, .bg.remark-slide-content h2{
+  text-shadow: 0.05em 0.05em 0.15em black;
+}
+code{
+  color:white;
+  background: rgba(0,0,0,0.8);
+  border-radius: .2em;
+  padding: .05em .3em .05em .3em;
+  box-shadow: 0.1em 0.1em 1em black inset;
+}
+#install {
+	position:absolute;
+	top:0;
+	z-index:999;
+}
+.w100 img{ width: 100%;}
+.w75  img{ width: 75%;}
+.w50  img{ width: 50%;}
+.w25  img{ width: 25%;}

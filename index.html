@@ -1,35 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css@8.0.0/normalize.css">
-    <style type="text/css">
-    .bg.remark-slide-content {
-       background-position: top;
-       background-size: contain;
-       background-color: #022150;
-       padding: 20em 0em 0em 1em;
-       color:white;
-     }
-    .bg.remark-slide-content h1, .bg.remark-slide-content h2{
-      text-shadow: 0.05em 0.05em 0.15em black;
-    }
-    code{
-      color:white;
-      background: rgba(0,0,0,0.8);
-      border-radius: .2em;
-      padding: .05em .3em .05em .3em;
-      box-shadow: 0.1em 0.1em 1em black inset;
-    }
-    .w100 img{ width: 100%;}
-    .w75  img{ width: 75%;}
-    .w50  img{ width: 50%;}
-    .w25  img{ width: 25%;}
-    </style>
-  </head>
-  <body><textarea id="source">
+﻿<!doctype html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="manifest" href="pwa.json" />
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<title>Git Basic</title>
+</head>
+<textarea id="source">
 # .center[Git for beginners]
 ### .center[![](logo.png)]
-### .center[Rémy F]
+### .center[Remy F]
 #### .center[Department of Information Technology, RERU]
 #### .center[1 November 2018]
 
@@ -546,6 +526,10 @@ The interactiv mode `-i` allow you to :
 
 ---
 
+# .center[Thank You]
+
+</textarea>
+<!--
 class:bg
 background-image: url(17.1.png)
 ## Let's see a last command : `stash`
@@ -570,10 +554,29 @@ class:bg
 background-image: url(17.2.png)
 ## Now I `git stash pop` to restore
 ### The door is back in the island **and** the staging
+-->
 
+<button id=install hidden onclick="installer.prompt().then(res => install.hidden=true)">Install</button>
 
-    </textarea>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>
-    <script>var slideshow = remark.create();</script>
-  </body>
-</html>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css@8.0.0/normalize.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>
+<script>var slideshow = remark.create();</script>
+<!-- PWA stuffs -->
+<!--script async src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.7/pwacompat.min.js" integrity="sha384-ptgwb3/v69WGur7IwSnWOowVxE7hcRB3DG/EiHdejrw2sFNwUHynFbiRMPxc4hdS" crossorigin="anonymous"></script-->
+<script>
+let installer;
+window.addEventListener('beforeinstallprompt', function(e) {
+  (installer = e).preventDefault();
+  return install.hidden = false;
+});
+window.addEventListener('appinstalled', function(e) {
+  install.hidden=!(installer = null);
+});
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('pwa.js').then(console.log).catch(console.error);
+	navigator.serviceWorker.ready.then(console.log).catch(console.error);
+} else {
+	console.error("no serviceWorker");
+}
+</script>
